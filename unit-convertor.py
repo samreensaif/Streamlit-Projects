@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
-from forex_python.converter import CurrencyRates
+from datetime import datetime
+
 
 def temperature_converter(value, from_unit, to_unit):
     # Convert to Celsius first
