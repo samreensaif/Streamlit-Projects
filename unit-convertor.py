@@ -324,7 +324,8 @@ def main():
     
     with col1:
         st.markdown("### Enter Value")
-        value = st.number_input("", value=0.0)
+        # value = st.number_input("", value=0.0)
+        value = st.number_input("", key="input2", label_visibility="collapsed")
         
     with col2:
         st.markdown("### From Unit")
