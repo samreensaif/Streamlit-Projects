@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 from datetime import datetime
-from fpdf2 import FPDF
+from fpdf import FPDF2 as FPDF
 import os
 
 # Configure Streamlit theme (must be first Streamlit command)
