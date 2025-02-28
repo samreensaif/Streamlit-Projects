@@ -1,11 +1,82 @@
 import streamlit as st
 import pandas as pd
 from datetime import datetime
-from fpdf import FPDF
+from fpdf2 import FPDF
 import os
 
+# Configure Streamlit theme (must be first Streamlit command)
+st.set_page_config(
+    page_title="Resume Builder",
+    page_icon="📄",
+    layout="wide",
+    initial_sidebar_state="expanded",
+)
+
+# Custom CSS for styling
+st.markdown("""
+<style>
+    /* Main background color */
+    .stApp {
+        background-color: #f0f2f6;
+    }
+    
+    /* Input fields styling */
+    .stTextInput input, .stTextArea textarea {
+        background-color: #ffffff;
+        color: #1f1f1f;
+        border: 1px solid #cccccc;
+        border-radius: 5px;
+        padding: 8px;
+    }
+    
+    /* Headers styling */
+    h1, h2, h3 {
+        color: #1e3d59;
+    }
+    
+    /* Button styling */
+    .stButton button {
+        background-color: #1e3d59;
+        color: white;
+        border-radius: 5px;
+        padding: 0.5rem 1rem;
+        border: none;
+    }
+    
+    .stButton button:hover {
+        background-color: #2b5480;
+    }
+    
+    /* Sidebar styling */
+    .css-1d391kg {
+        background-color: #e8eef4;
+    }
+    
+    /* Text color */
+    .stMarkdown {
+        color: #1f1f1f;
+    }
+</style>
+""", unsafe_allow_html=True)
+
 def main():
-    st.title("Resume Builder Application")
+    # Add custom theme configuration
+    custom_theme = """
+        [theme]
+        primaryColor="#1e3d59"
+        backgroundColor="#f0f2f6"
+        secondaryBackgroundColor="#e8eef4"
+        textColor="#1f1f1f"
+        font="sans serif"
+    """
+    
+    # Write theme config to .streamlit/config.toml
+    if not os.path.exists(".streamlit"):
+        os.mkdir(".streamlit")
+    with open(".streamlit/config.toml", "w") as f:
+        f.write(custom_theme)
+
+    st.title("📄 Resume Builder Application ✍️")
     
     # Initialize session state for storing resume data
     if 'profile_pic' not in st.session_state:
